@@ -8,7 +8,7 @@ const loadPhones = () => {
     fetch(url)
         .then(res => res.json())
         .then((data) => {
-            console.log(data.data);
+            // console.log(data.data);
 
             if (data.data.length == 0) {
                 const noResultContainer = document.getElementById('no-result');
@@ -74,6 +74,7 @@ const showDetails = info => {
                     <p>Chip set: ${info.mainFeatures.chipSet}</p>
                     <p>Display size: ${info.mainFeatures.displaySize}</p>
                     <p>Sensors: ${info.mainFeatures.sensors}</p>
+                    <p>Others: USB: ${info.others.USB}, Bluetooth: ${info.others.Bluetooth}, WLAN: ${info.others.WLAN}, Radio: ${info.others.Radio}, NFC: ${info.others.NFC}, GPS: ${info.others.GPS}</p>
                     <p>Release date: ${info.releaseDate}</p>
             </div>
         </div>

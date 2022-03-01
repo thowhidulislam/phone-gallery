@@ -21,14 +21,14 @@ const loadPhones = () => {
                 noResultContainer.appendChild(div);
             }
             else {
-                displayPhones(data.data)
+                displayPhones(data.data.slice(0, 20));
             };
 
         })
 }
 
 const displayPhones = phones => {
-
+    const phone = phones.slice(0, 20);
     for (const phone of phones) {
         const rowDiv = document.getElementById('row');
         const div = document.createElement('div');
@@ -59,23 +59,25 @@ const showDetails = info => {
     console.log(info)
     const detailsContainer = document.getElementById('details-container');
     const div = document.createElement('div');
+    div.classList.add('card');
 
     div.innerHTML = `
-        <div>
-            <div class="border p-4 mt-4 rounded h-100 w-50 m-auto">
+        <div class="card-body">
+            <div class=" p-3 mt-4 rounded h-100 w-100 m-auto d-sm-flex d-md-flex flex-md-column d-lg-flex flex-lg-row ">
                 <div id="details-image-container">
                     <img src="${info.image}" alt="" id="mobile-details-image" class=" mb-4">
                 </div>
+                <div class ="ms-sm-2 ms-md-3 ms-lg-5">
                     <h3>${info.name}</h3>
                     <h4>Brand name: ${info.brand}</h4>
                     <h4 class="mt-3">Main Features</h4>
                     <p>Storage:${info.mainFeatures.storage}</p>
                     <p>Display Size:${info.mainFeatures.displaySize}</p>
                     <p>Chip set: ${info.mainFeatures.chipSet}</p>
-                    <p>Display size: ${info.mainFeatures.displaySize}</p>
                     <p>Sensors: ${info.mainFeatures.sensors}</p>
                     <p>Others: USB: ${info.others.USB}, Bluetooth: ${info.others.Bluetooth}, WLAN: ${info.others.WLAN}, Radio: ${info.others.Radio}, NFC: ${info.others.NFC}, GPS: ${info.others.GPS}</p>
                     <p>Release date: ${info.releaseDate}</p>
+                </div>
             </div>
         </div>
     `
